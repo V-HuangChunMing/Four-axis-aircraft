@@ -3,7 +3,7 @@
  * Auto generated Run-Time-Environment Configuration File
  *      *** Do not modify ! ***
  *
- * Project: 'NoOS' 
+ * Project: 'NoOS_Project' 
  * Target:  'Target 1' 
  */
 
