@@ -126,7 +126,7 @@ void USART1_IRQHandler(void)                	//串口1中断服务程序
 			}
 		}   		 
   } 
-  
+//按照这种方式在使用缓冲区之后需要将USART1_RX_STA置为0，才能进行下一次数据的读取
 
 
 #if SYSTEM_SUPPORT_OS 	//如果SYSTEM_SUPPORT_OS为真，则需要支持OS.
