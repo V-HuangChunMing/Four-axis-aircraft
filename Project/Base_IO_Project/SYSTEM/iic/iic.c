@@ -146,7 +146,7 @@ void IIC_2_Init(void)                //初始化IIC的IO口
 }
 void IIC_2_Start(void)			//发送IIC开始信号
 {
-	SDA_1_OUT();     //sda线输出
+	SDA_2_OUT();     //sda线输出
 	IIC_2_SDA=1;	  	  
 	IIC_2_SCL=1;
 	delay_us(4);
@@ -156,7 +156,7 @@ void IIC_2_Start(void)			//发送IIC开始信号
 }
 void IIC_2_Stop(void)	  			//发送IIC停止信号
 {
-	SDA_1_OUT();//sda线输出
+	SDA_2_OUT();//sda线输出
 	IIC_2_SCL=0;
 	IIC_2_SDA=0;//STOP:when CLK is high DATA change form low to high
  	delay_us(4);
@@ -170,7 +170,7 @@ void IIC_2_Stop(void)	  			//发送IIC停止信号
 void IIC_2_Send_Byte(u8 txd)			//IIC发送一个字节
 {
     u8 t;   
-	SDA_1_OUT(); 	    
+	SDA_2_OUT(); 	    
     IIC_2_SCL=0;//拉低时钟开始数据传输
     for(t=0;t<8;t++)
     {              
@@ -191,7 +191,7 @@ void IIC_2_Send_Byte(u8 txd)			//IIC发送一个字节
 u8 IIC_2_Read_Byte(unsigned char ack)//IIC读取一个字节
 {
 	unsigned char i,receive=0;
-	SDA_1_IN();//SDA设置为输入
+	SDA_2_IN();//SDA设置为输入
     for(i=0;i<8;i++ )
 	{
         IIC_2_SCL=0; 
@@ -213,7 +213,7 @@ u8 IIC_2_Read_Byte(unsigned char ack)//IIC读取一个字节
 u8 IIC_2_Wait_Ack(void) 				//IIC等待ACK信号
 {
 	u8 ucErrTime=0;
-	SDA_1_IN();      //SDA设置为输入  
+	SDA_2_IN();      //SDA设置为输入  
 	IIC_2_SDA=1;delay_us(1);	   
 	IIC_2_SCL=1;delay_us(1);	 
 	while(READ_1_SDA)
@@ -232,7 +232,7 @@ u8 IIC_2_Wait_Ack(void) 				//IIC等待ACK信号
 void IIC_2_Ack(void)//IIC发送ACK信号
 {
 	IIC_2_SCL=0;
-	SDA_1_OUT();
+	SDA_2_OUT();
 	IIC_2_SDA=0;
 	delay_us(2);
 	IIC_2_SCL=1;
@@ -244,7 +244,7 @@ void IIC_2_Ack(void)//IIC发送ACK信号
 void IIC_2_NAck(void)				//IIC不发送ACK信号
 {
 	IIC_2_SCL=0;
-	SDA_1_OUT();
+	SDA_2_OUT();
 	IIC_2_SDA=1;
 	delay_us(2);
 	IIC_2_SCL=1;

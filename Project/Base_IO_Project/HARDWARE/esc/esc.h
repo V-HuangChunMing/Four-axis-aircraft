@@ -3,6 +3,7 @@
 
 #include "sys.h"
 #include "pwm.h"
+#include "delay.h"
 //ESC1 PE9
 //ESC2 PE11
 //ESC3 PE13
