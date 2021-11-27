@@ -2,7 +2,7 @@
 #define __MPU6050_H
 #include "iic.h"   												  	  
 
-#define MPU_AD0_CTRL			PAout(5)	//控制AD0电平,从而控制MPU地址
+//#define MPU_AD0_CTRL			PAout(5)	//控制AD0电平,从而控制MPU地址
 
 //#define MPU_ACCEL_OFFS_REG		0X06	//accel_offs寄存器,可读取版本号,寄存器手册未提到
 //#define MPU_PROD_ID_REG			0X0C	//prod id寄存器,在寄存器手册未提到

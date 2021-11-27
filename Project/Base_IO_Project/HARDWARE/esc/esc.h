@@ -19,6 +19,7 @@ void Unlock_ESC_2(void);
 void Unlock_ESC_3(void);
 void Unlock_ESC_4(void);
 void Unlock_ESC_All(void);
+void Set_Throttle_Pos(void);
 
 
 #endif 

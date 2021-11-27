@@ -36,3 +36,5 @@
 ..\obj\input_capture.o: ..\FWLIB\inc\stm32f4xx_dac.h
 ..\obj\input_capture.o: ..\FWLIB\inc\stm32f4xx_dcmi.h
 ..\obj\input_capture.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
+..\obj\input_capture.o: ..\SYSTEM\usart\usart.h
+..\obj\input_capture.o: D:\Keil_5\ARM\ARMCC\Bin\..\include\stdio.h

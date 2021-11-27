@@ -7,8 +7,7 @@
 #define PWM3	3//PE13
 #define PWM4	4//PE14
 
-#define PSC 83//时钟预分频数
-#define ARR 499//自动重装值
+
 
 
 void TIM1_PWM_Init(void);

@@ -1,5 +1,7 @@
 #include "pwm.h"
-
+#define PSC 167//时钟预分频数
+#define ARR 4999//自动重装值
+//RCC_APB2PeriphClockCmd(RCC_APB2Periph_TIM1,ENABLE); APB2的频率为168Mhz
 
 
 
@@ -36,7 +38,7 @@ void TIM1_PWM_Init(void)
 	//初始化TIM1 PWM模式	 
 	TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM1; //选择定时器模式:TIM脉冲宽度调制模式2
  	TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable; //比较输出使能
-	TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_Low; //输出极性:TIM输出比较极性低
+	TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_High; //输出极性:TIM输出比较极性低
 	TIM_OC1Init(TIM1, &TIM_OCInitStructure);  //根据T指定的参数初始化外设TIM1 4OC1
 	TIM_OC2Init(TIM1, &TIM_OCInitStructure);
 	TIM_OC3Init(TIM1, &TIM_OCInitStructure);
@@ -53,6 +55,14 @@ void TIM1_PWM_Init(void)
 	
 	TIM_Cmd(TIM1, ENABLE);  //使能TIM3
 	TIM_CtrlPWMOutputs(TIM1,ENABLE);//使能pWM输出
+	
+	TIM_SetCompare1(TIM1,0);
+	TIM_SetCompare2(TIM1,0);
+	TIM_SetCompare3(TIM1,0);
+	TIM_SetCompare4(TIM1,0);
+	
+	
+	
 
 //	//此部分需手动修改IO口设置
 //	
@@ -91,11 +101,6 @@ void TIM1_PWM_Init(void)
 //	
 //	TIM_Cmd(TIM1, ENABLE);  //使能TIM3
 //	
- 
-		
-
-
-
 
 }  
 
@@ -107,7 +112,7 @@ void TIM1_PWM_Init(void)
 void Set_PWM_VAL(u8 PWM_NUM,u32 VAL){
 	////VAL 0-100 代表0%-100%
 	u32 PWM_VAL=0;
-	PWM_VAL=VAL*5;
+	PWM_VAL=VAL*50;
 	switch(PWM_NUM){
 		case PWM1:
 			TIM_SetCompare1(TIM1,PWM_VAL);	//修改比较值，修改占空比

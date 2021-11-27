@@ -9,20 +9,10 @@
 u8 MPU_Init(void)
 { 
 	u8 res;
-	GPIO_InitTypeDef GPIO_InitStruct; 
-	
-  RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);
-	
-	GPIO_InitStruct.GPIO_Mode = GPIO_Mode_OUT;
-	GPIO_InitStruct.GPIO_Pin = GPIO_Pin_5;
-	GPIO_InitStruct.GPIO_Speed = GPIO_Fast_Speed;
-  GPIO_Init(GPIOA, &GPIO_InitStruct);
-	
-	MPU_AD0_CTRL = 0;
 	
 	IIC_2_Init();//初始化IIC总线
 	MPU_Write_Byte(MPU_PWR_MGMT1_REG,0X80);	//复位MPU6050
-  delay_ms(100);
+	delay_ms(100);
 	MPU_Write_Byte(MPU_PWR_MGMT1_REG,0X00);	//唤醒MPU6050 
 	MPU_Set_Gyro_Fsr(3);					//陀螺仪传感器,±2000dps
 	MPU_Set_Accel_Fsr(0);					//加速度传感器,±2g
@@ -136,7 +126,7 @@ void MPU6050ReadAcc(short *ax,short *ay,short *az)
 u8 MPU_Write_Len(u8 addr,u8 reg,u8 len,u8 *buf)
 {
 	u8 i; 
-  IIC_2_Start(); 
+	IIC_2_Start(); 
 	IIC_2_Send_Byte((addr<<1)|0);//发送器件地址+写命令	
 	if(IIC_2_Wait_Ack())	//等待应答
 	{
@@ -195,7 +185,7 @@ u8 MPU_Read_Len(u8 addr,u8 reg,u8 len,u8 *buf)
 //    其他,错误代码
 u8 MPU_Write_Byte(u8 reg,u8 data) 				 
 { 
-  IIC_2_Start(); 
+	IIC_2_Start(); 
 	IIC_2_Send_Byte((MPU_ADDR<<1)|0);//发送器件地址+写命令	
 	if(IIC_2_Wait_Ack())	//等待应答
 	{

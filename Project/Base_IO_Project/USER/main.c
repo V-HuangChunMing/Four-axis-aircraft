@@ -2,50 +2,61 @@
 #include "usart.h"
 #include "delay.h"
 #include "pwm.h"
+#include "input_capture.h"
 #include "oled.h"
+#include "gy86.h"
+#include "time.h"
+#include "esc.h"
+
+//所有的初始化
+void Init_ALL(void);
 
 
-//STM32F407开发板 
-//STM32F4工程模板-库函数版本
 
+u32 result=0;
 
 int main(void)
 {
-	u32 t=0;
-	u32 i=0;
-	extern const unsigned char BMP1[];
-	uart1_init(115200);
-	delay_init(84);
-	TIM1_PWM_Init();
-	Set_PWM_VAL(PWM1,100);
-	OLED_Init();
+	
+	Init_ALL();
 
-	  
+
+
 	while(1)
 	{
-		OLED_Fill(0xFF);//全屏点亮
-		delay_ms(200);
-		OLED_Fill(0x00);//全屏灭
-		delay_ms(200);
-		for(i=0;i<5;i++)
-		{
-			OLED_ShowCN(22+i*16,0,i);//测试显示中文
-		}
-		delay_ms(200);
-		OLED_ShowStr(0,3,"HelTec Automation",1);//测试6*8字符
-		OLED_ShowStr(0,4,"Hello Tech",2);				//测试8*16字符
-		delay_ms(200);
-		OLED_CLS();//清屏
-		OLED_OFF();//测试OLED休眠
-		delay_ms(200);
-		OLED_ON();//测试OLED休眠后唤醒
-		OLED_DrawBMP(0,0,128,8,(unsigned char *)BMP1);//测试BMP位图显示
-		delay_ms(200);
+		
+
+
 	}
 }
 	
 
-
-
-
-
+void Init_ALL(void){
+	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_2);//设置系统中断优先级分组2
+	
+	//time_init
+	Clock_Config();
+	
+	//delay
+	delay_init(168);
+	
+	//BlueTooth
+	uart1_init(115200);
+	
+	//ESC
+	TIM1_PWM_Init();
+	
+	
+	//Receiver
+	TIM3_CAP_Init();
+	
+	
+	//OLED
+	OLED_Init();
+	
+	
+	//MPU
+	MPU_Init();
+	
+	
+}

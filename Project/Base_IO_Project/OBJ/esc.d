@@ -37,3 +37,4 @@
 ..\obj\esc.o: ..\FWLIB\inc\stm32f4xx_dcmi.h
 ..\obj\esc.o: ..\FWLIB\inc\stm32f4xx_fsmc.h
 ..\obj\esc.o: ..\SYSTEM\pwm\pwm.h
+..\obj\esc.o: ..\SYSTEM\delay\delay.h

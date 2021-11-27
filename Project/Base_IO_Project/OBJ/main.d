@@ -39,5 +39,9 @@
 ..\obj\main.o: ..\SYSTEM\sys\sys.h
 ..\obj\main.o: ..\SYSTEM\delay\delay.h
 ..\obj\main.o: ..\SYSTEM\pwm\pwm.h
+..\obj\main.o: ..\SYSTEM\input_capture\input_capture.h
 ..\obj\main.o: ..\HARDWARE\oled\oled.h
 ..\obj\main.o: ..\SYSTEM\iic\iic.h
+..\obj\main.o: ..\HARDWARE\gy86\gy86.h
+..\obj\main.o: ..\SYSTEM\time\time.h
+..\obj\main.o: ..\HARDWARE\esc\esc.h

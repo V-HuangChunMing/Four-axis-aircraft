@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F40_41xxx,USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\CORE;..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\USER;..\FWLIB\inc;..\SYSTEM\pwm;..\SYSTEM\iic;..\SYSTEM\input_capture;..\HARDWARE\receiver;..\HARDWARE\bluetooth;..\HARDWARE\gy86;..\HARDWARE\esc;..\HARDWARE\oled</IncludePath>
+              <IncludePath>..\CORE;..\SYSTEM\delay;..\SYSTEM\sys;..\SYSTEM\usart;..\USER;..\FWLIB\inc;..\SYSTEM\pwm;..\SYSTEM\iic;..\SYSTEM\input_capture;..\HARDWARE\receiver;..\HARDWARE\bluetooth;..\HARDWARE\gy86;..\HARDWARE\esc;..\HARDWARE\oled;..\SYSTEM\time</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -462,6 +462,11 @@
               <FileName>input_capture.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\SYSTEM\input_capture\input_capture.c</FilePath>
+            </File>
+            <File>
+              <FileName>time.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\SYSTEM\time\time.c</FilePath>
             </File>
           </Files>
         </Group>
